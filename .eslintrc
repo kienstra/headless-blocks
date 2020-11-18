@@ -1,0 +1,30 @@
+{
+	"root": true,
+	"extends": [
+		"plugin:@wordpress/eslint-plugin/recommended-with-formatting",
+		"plugin:import/recommended",
+		"plugin:eslint-comments/recommended"
+	],
+	"globals": {
+		"wp": "readonly"
+	},
+	"plugins": [
+		"react-hooks"
+	],
+	"rules": {
+		"react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+		"react-hooks/exhaustive-deps": "warn",
+		"@wordpress/dependency-group": "error",
+		"@wordpress/react-no-unsafe-timeout": "error",
+		"comma-dangle": [
+			"error",
+			{
+				"arrays": "always-multiline",
+				"objects": "always-multiline",
+				"imports": "always-multiline",
+				"exports": "always-multiline",
+				"functions": "never"
+			}
+		]
+	}
+}
