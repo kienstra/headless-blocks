@@ -7,7 +7,7 @@
 const capitalize = ( name ) => name.charAt( 0 ).toUpperCase() + name.slice( 1 );
 
 /**
- * Gets a PascalCase string from a snake_case one.
+ * Gets a PascalCase string from one with dashes.
  *
  * @param {string} dashCase A dashed string, like 'example-block'.
  * @return {string} A PascalCase string.
