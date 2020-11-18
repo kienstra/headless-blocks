@@ -50,53 +50,57 @@ class TestBlock extends TestCase {
 	 * @covers \HeadlessBlocks\Block::init()
 	 */
 	public function test_init() {
-		WP_Mock::expectActionAdded( 'init', [ $this->instance, 'register_block' ] );
+		WP_Mock::expectFilterAdded( 'render_block', [ $this->instance, 'render_serialized_block' ] );
 		$this->instance->init();
 	}
 
 	/**
-	 * Test register_block.
+	 * Test render_serialized_block when on a block namespace that this should not change.
 	 *
-	 * @covers \HeadlessBlocks\Block::register_block()
+	 * @covers \HeadlessBlocks\Block::render_serialized_block()
 	 */
-	public function test_register_block() {
-		WP_Mock::userFunction( 'register_block_type' )
-			->once()
-			->with( Block::BLOCK_NAME, Mockery::type( 'array' ) );
+	public function test_render_serialized_block_wrong_block_namespace() {
+		$initial_content = '<p>Example</p>';
 
-		$this->instance->register_block();
+		$this->assertEquals(
+			$initial_content,
+			$this->instance->render_serialized_block(
+				$initial_content,
+				[
+					'blockName' => 'core/paragraph',
+				]
+			)
+		);
 	}
 
 	/**
-	 * Test render_block.
+	 * Test render_serialized_block when on a block namespace that this should not change.
 	 *
-	 * @covers \HeadlessBlocks\Block::render_block()
+	 * @covers \HeadlessBlocks\Block::render_serialized_block()
 	 */
-	public function test_render_block() {
-		$post_id  = 426;
-		$post     = new stdClass();
-		$post->ID = $post_id;
-		WP_Mock::userFunction( 'get_post' )
+	public function test_render_serialized_block_correct_block_namespace() {
+		$initial_content  = '<p>Here is initial content</p>';
+		$block_name       = 'genesis-custom-blocks/a-test';
+		$block_attributes = [ 'foo' => 'first' ];
+
+		WP_Mock::userFunction( 'get_comment_delimited_block_content' )
 			->once()
-			->andReturn( $post );
+			->withArgs(
+				[
+					$block_name,
+					$block_attributes,
+					''
+				]
+			);
 
-		WP_Mock::userFunction( 'is_admin' )
-			->once()
-			->andReturn( false );
-		WP_Mock::userFunction( 'wp_enqueue_script' )
-			->once();
-		WP_Mock::userFunction( 'wp_enqueue_style' )
-			->once();
-		WP_Mock::userFunction( 'wp_json_encode' )
-			->once();
-		WP_Mock::userFunction( 'wp_add_inline_script' )
-			->once();
-
-		$actual = $this->instance->render_block( [] );
-
-		$this->assertStringContainsString(
-			'<div class="headless-blocks-block" data-block-instance=',
-			$actual
+		$actual = $this->instance->render_serialized_block(
+			$initial_content,
+			[
+				'blockName' => $block_name,
+				'attrs'     => $block_attributes,
+			]
 		);
+
+		$this->assertNotEquals( $actual, $initial_content );
 	}
 }

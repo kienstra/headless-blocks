@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-const path = require( 'path' );
+const { resolve } = require( 'path' );
 
 /**
  * WordPress dependencies
@@ -11,10 +11,10 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 module.exports = {
 	...defaultConfig,
 	entry: {
-		block: './js/src/index.js',
+		blocks: './js/src/index.js',
 	},
 	output: {
-		path: path.resolve( __dirname, 'js/dist' ),
+		path: resolve( __dirname, 'js/dist' ),
 		filename: '[name].js',
 	},
 };
