@@ -50,7 +50,7 @@ class TestBlock extends TestCase {
 	 * @covers \HeadlessBlocks\Block::init()
 	 */
 	public function test_init() {
-		WP_Mock::expectFilterAdded( 'render_block', [ $this->instance, 'render_serialized_block' ] );
+		WP_Mock::expectFilterAdded( 'render_block', [ $this->instance, 'render_serialized_block' ], 10, 2 );
 		$this->instance->init();
 	}
 
@@ -89,7 +89,7 @@ class TestBlock extends TestCase {
 				[
 					$block_name,
 					$block_attributes,
-					''
+					'',
 				]
 			);
 

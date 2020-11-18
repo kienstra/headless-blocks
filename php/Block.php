@@ -41,7 +41,7 @@ class Block {
 	 * Inits the class.
 	 */
 	public function init() {
-		add_filter( 'render_block', [ $this, 'render_serialized_block' ] );
+		add_filter( 'render_block', [ $this, 'render_serialized_block' ], 10, 2 );
 	}
 
 	/**
@@ -50,7 +50,6 @@ class Block {
 	 * This allows parsing the block on the front-end,
 	 * and rendering it with the props.
 	 * There will be no block markup without additional rendering on the front-end.
-	 *
 	 *
 	 * @param string $block_content The initial block content to filter.
 	 * @param array  $block         The block data.
