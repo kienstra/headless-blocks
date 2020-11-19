@@ -4,10 +4,7 @@
 import { addPreview } from '../';
 
 describe( 'addPreview', () => {
-	it( 'should add a preview for the block', () => {
-		const actual = addPreview( null, 'example', {} );
-		expect(
-			actual.length
-		).toStrictEqual( 1 );
+	it( 'should not add a preview for the block because it has the wrong namespace', () => {
+		expect(	addPreview( null, 'example', {} ) ).toStrictEqual( null );
 	} );
 } );

@@ -17,7 +17,7 @@ import { dashToPascalCase } from './';
  * @return {null|React.Component} An alternate component, or null if there is none.
  */
 const addPreview = ( initialPreview, blockName ) => {
-	const componentName = dashToPascalCase( blockName );
+	const componentName = `GenesisCustomBlocks${ dashToPascalCase( blockName ) }`;
 	return previewComponents[ componentName ] ? previewComponents[ componentName ] : initialPreview; /* eslint-disable-line import/namespace */
 };
 
