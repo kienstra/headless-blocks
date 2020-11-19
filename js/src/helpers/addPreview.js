@@ -6,7 +6,7 @@ import * as React from 'react';
 /**
  * Internal dependencies
  */
-import * as previewComponents from '../components';
+import * as previewComponents from 'headless-block-components';
 import { dashToPascalCase } from './';
 
 /**
