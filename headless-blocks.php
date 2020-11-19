@@ -10,7 +10,7 @@ namespace HeadlessBlocks;
 /*
 Plugin Name: Headless Blocks
 Plugin URI: https://github.com/kienstra/headless-blocks
-Description: A block that answers your questions.
+Description: Interactive blocks in headless and the block editor.
 Version: 0.1.0
 Author: Ryan Kienstra, Phil Johnston
 Author URI: https://wpengine.com
