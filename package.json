@@ -39,7 +39,7 @@
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-import": "2.22.0",
 		"eslint-plugin-react-hooks": "4.0.8",
-		"headless-block-components": "0.2.0",
+		"headless-block-components": "0.3.3",
 		"husky": "4.2.5",
 		"jest-environment-jsdom-sixteen": "1.0.3",
 		"jest-image-snapshot": "4.0.2",
