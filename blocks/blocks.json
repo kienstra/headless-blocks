@@ -64,5 +64,32 @@
         "order": 3
       }
     }
+  },
+  "genesis-custom-blocks\/example": {
+    "name": "example",
+    "title": "Example",
+    "excluded": [],
+    "icon": "genesis_custom_blocks",
+    "category": {
+      "icon": null,
+      "slug": "text",
+      "title": "Text"
+    },
+    "keywords": [],
+    "fields": {
+      "new-field": {
+        "location": "editor",
+        "width": "100",
+        "help": "",
+        "default": "",
+        "placeholder": "",
+        "maxlength": "",
+        "name": "new-field",
+        "label": "New Field",
+        "control": "text",
+        "type": "string",
+        "order": 0
+      }
+    }
   }
 }
