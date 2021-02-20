@@ -7,14 +7,9 @@
 		"esModuleInterop": true,
 		"jsx": "react",
 		"allowJs": true,
-		"checkJs": true,
 		"sourceMap": true,
-		"noEmit": true
 	},
 	"include": [
 		"js/src/**/*"
-	],
-	"exclude": [
-		"node_modules/", "js/src/**/test/"
 	]
 }

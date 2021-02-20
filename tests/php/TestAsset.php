@@ -51,6 +51,7 @@ class TestAsset extends TestCase {
 	 */
 	public function test_init() {
 		WP_Mock::expectActionAdded( 'enqueue_block_editor_assets', [ $this->instance, 'enqueue_block_editor_scripts' ] );
+		WP_Mock::expectActionAdded( 'genesis_custom_blocks_template_path', [ $this->instance, 'get_blocks_directory' ] );
 		$this->instance->init();
 	}
 

@@ -44,7 +44,7 @@ class Asset {
 	 */
 	public function init() {
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
-		add_action( 'genesis_custom_blocks_add_blocks', [ $this, 'register_block' ] );
+		add_action( 'genesis_custom_blocks_template_path', [ $this, 'get_blocks_directory' ] );
 	}
 
 	/**
@@ -97,36 +97,13 @@ class Asset {
 	}
 
 	/**
-	 * Registers the block.
+	 * Gets the blocks directory in this plugin.
+	 *
+	 * @param string $path The initial blocks directory.
+	 * @return string The path of the block directory
 	 */
-	public function register_block() {
-		add_block(
-			'email-opt-in',
-			[
-				'title'    => 'Email Opt In',
-				'category' => 'common',
-				'icon'     => 'email',
-				'fields'   => [
-					'heading'            => [
-						'label'   => __( 'Heading', 'headless-block' ),
-						'control' => 'text',
-					],
-					'main-copy'          => [
-						'label'   => __( 'Main Copy', 'headless-block' ),
-						'control' => 'text',
-					],
-					'submission-message' => [
-						'label'   => __( 'Submission Message', 'headless-block' ),
-						'control' => 'text',
-						'help'    => __( 'This will show on submitting the form', 'genesis-custom-blocks' ),
-					],
-					'button-text'        => [
-						'label'   => __( 'Button Text', 'headless-block' ),
-						'control' => 'text',
-						'width'   => '50',
-					],
-				],
-			]
-		);
+	public function get_blocks_directory( $path ) {
+		unset( $path );
+		return $this->plugin->get_dir();
 	}
 }
