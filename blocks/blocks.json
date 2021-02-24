@@ -12,8 +12,6 @@
     "keywords": [],
     "fields": {
       "heading": {
-        "location": "editor",
-        "width": "100",
         "name": "heading",
         "label": "Heading",
         "control": "text",
@@ -21,8 +19,6 @@
         "order": 0
       },
       "main-copy": {
-        "location": "editor",
-        "width": "100",
         "name": "main-copy",
         "label": "Main Copy",
         "control": "text",
@@ -30,7 +26,6 @@
         "order": 1
       },
       "submission-message": {
-        "location": "editor",
         "width": "50",
         "help": "This will show on submitting the form",
         "name": "submission-message",
@@ -40,7 +35,6 @@
         "order": 2
       },
       "button-text": {
-        "location": "editor",
         "width": "50",
         "name": "button-text",
         "label": "Button Text",
