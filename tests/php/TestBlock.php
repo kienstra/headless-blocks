@@ -7,9 +7,8 @@
 
 namespace HeadlessBlocks;
 
-use stdClass;
-use WP_Mock;
-use Mockery;
+use Brain\Monkey;
+use Brain\Monkey\Functions;
 
 /**
  * Tests for class Block.
@@ -24,15 +23,25 @@ class TestBlock extends TestCase {
 	public $instance;
 
 	/**
-	 * Setup.
+	 * Sets up each test.
 	 *
 	 * @inheritdoc
 	 */
 	public function setUp() : void {
 		parent::setUp();
+		Monkey\setUp();
 		$plugin = new Plugin( dirname( dirname( __FILE__ ) ) );
-		$plugin->init();
 		$this->instance = new Block( $plugin );
+	}
+
+	/**
+	 * Tears down after each test.
+	 *
+	 * @inheritdoc
+	 */
+	public function tearDown() : void {
+		Monkey\tearDown();
+		parent::tearDown();
 	}
 
 	/**
@@ -50,7 +59,13 @@ class TestBlock extends TestCase {
 	 * @covers \HeadlessBlocks\Block::init()
 	 */
 	public function test_init() {
-		WP_Mock::expectFilterAdded( 'render_block', [ $this->instance, 'render_serialized_block' ], 10, 2 );
+		Functions\expect( 'add_filter' )->once()->with(
+			'render_block',
+			[ $this->instance, 'render_serialized_block' ],
+			10,
+			2
+		);
+
 		$this->instance->init();
 	}
 
@@ -77,20 +92,19 @@ class TestBlock extends TestCase {
 	 * Test render_serialized_block when on a block namespace that this should not change.
 	 *
 	 * @covers \HeadlessBlocks\Block::render_serialized_block()
+	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired
 	 */
 	public function test_render_serialized_block_correct_block_namespace() {
 		$initial_content  = '<p>Here is initial content</p>';
 		$block_name       = 'genesis-custom-blocks/a-test';
 		$block_attributes = [ 'foo' => 'first' ];
 
-		WP_Mock::userFunction( 'get_comment_delimited_block_content' )
+		Functions\expect( 'get_comment_delimited_block_content' )
 			->once()
-			->withArgs(
-				[
-					$block_name,
-					$block_attributes,
-					'',
-				]
+			->with(
+				$block_name,
+				$block_attributes,
+				''
 			);
 
 		$actual = $this->instance->render_serialized_block(

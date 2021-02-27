@@ -79,7 +79,7 @@ class Plugin {
 	 * Initiates the plugin.
 	 */
 	public function init() {
-		add_action( 'init', [ $this, 'plugin_localization' ] );
+		\add_action( 'init', [ $this, 'plugin_localization' ] );
 		$this->init_classes();
 	}
 
@@ -101,7 +101,7 @@ class Plugin {
 	 * @return void.
 	 */
 	public function plugin_localization() {
-		load_plugin_textdomain( self::TEXTDOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages' );
+		\load_plugin_textdomain( self::TEXTDOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**

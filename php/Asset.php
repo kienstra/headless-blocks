@@ -43,8 +43,8 @@ class Asset {
 	 * Inits the class.
 	 */
 	public function init() {
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
-		add_action( 'genesis_custom_blocks_template_path', [ $this, 'get_blocks_directory' ] );
+		\add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
+		\add_action( 'genesis_custom_blocks_template_path', [ $this, 'get_blocks_directory' ] );
 	}
 
 	/**

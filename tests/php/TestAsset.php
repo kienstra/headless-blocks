@@ -7,7 +7,8 @@
 
 namespace HeadlessBlocks;
 
-use WP_Mock;
+use Brain\Monkey\Functions;
+use Brain\Monkey;
 
 /**
  * Tests for class Asset.
@@ -15,43 +16,51 @@ use WP_Mock;
 class TestAsset extends TestCase {
 
 	/**
-	 * Instance of Asset.
+	 * The asset object.
 	 *
 	 * @var Asset
 	 */
 	public $instance;
 
 	/**
-	 * Setup.
+	 * Sets up each test.
 	 *
 	 * @inheritdoc
-	 * @return void
 	 */
 	public function setUp() : void {
 		parent::setUp();
-		WP_Mock::userFunction( 'plugins_url' );
+		Monkey\setUp();
+		Functions\stubs( [ 'plugins_url' ] );
 		$plugin = new Plugin( dirname( dirname( __FILE__ ) ) );
-		$plugin->init();
 		$this->instance = new Asset( $plugin );
 	}
 
 	/**
-	 * Test __construct.
+	 * Tears down after each test.
 	 *
-	 * @covers \HeadlessBlocks\Plugin::__construct()
+	 * @inheritdoc
 	 */
-	public function test_construct() {
-		$this->assertEquals( __NAMESPACE__ . '\\Plugin', get_class( $this->instance->plugin ) );
+	public function tearDown() : void {
+		Monkey\tearDown();
+		parent::tearDown();
 	}
 
 	/**
 	 * Test init.
 	 *
 	 * @covers \HeadlessBlocks\Plugin::init()
+	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired
 	 */
 	public function test_init() {
-		WP_Mock::expectActionAdded( 'enqueue_block_editor_assets', [ $this->instance, 'enqueue_block_editor_scripts' ] );
-		WP_Mock::expectActionAdded( 'genesis_custom_blocks_template_path', [ $this->instance, 'get_blocks_directory' ] );
+		Functions\expect( 'add_action' )->once()->with(
+			'enqueue_block_editor_assets',
+			[ $this->instance, 'enqueue_block_editor_scripts' ]
+		);
+		Functions\expect( 'add_action' )->once()->with(
+			'genesis_custom_blocks_template_path',
+			[ $this->instance, 'get_blocks_directory' ]
+		);
+
 		$this->instance->init();
 	}
 
@@ -61,7 +70,7 @@ class TestAsset extends TestCase {
 	 * @covers \HeadlessBlocks\Plugin::enqueue_block_editor_scripts()
 	 */
 	public function test_enqueue_block_editor_scripts() {
-		WP_Mock::userFunction( 'wp_enqueue_script' )
+		Functions\expect( 'wp_enqueue_script' )
 			->once()
 			->withSomeOfArgs( 'headless-blocks-blocks' );
 
