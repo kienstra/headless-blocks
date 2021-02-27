@@ -11,7 +11,7 @@ Use interactive React components on the front-end.
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/
 **Requires PHP:** 7.1
 
-[![Build Status](https://travis-ci.org/kienstra/headless-blocks.svg?branch=master)](https://travis-ci.org/kienstra/headless-blocks) [![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](http://gruntjs.com)
+[![Build Status](https://travis-ci.com/kienstra/headless-blocks.svg?branch=master)](https://travis-ci.org/kienstra/headless-blocks) [![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](http://gruntjs.com)
 
 ## Description ##
 
@@ -22,6 +22,7 @@ Use interactive React components on the front-end.
 1. Install this [.zip](https://github.com/studiopress/genesis-custom-blocks/files/6026023/genesis-custom-blocks.1.1.0.zip) of Genesis Custom Blocks, a dependency of this plugin
 1. Clone this repo into `wp-content/plugins/`
 1. `cd headless-blocks`
+1. `nvm use # ensure npm is on the right version`
 1. `bash bin/setup.sh`
 1. Follow the prompt to enter the URL of your headless front-end repo
 1. `npm run build`
