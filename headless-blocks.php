@@ -8,13 +8,13 @@
 namespace HeadlessBlocks;
 
 /*
-Plugin Name: React Blocks
+Plugin Name: Headless Blocks
 Plugin URI: https://github.com/kienstra/headless-blocks
-Description: A block that answers your questions.
+Description: Interactive blocks in headless and the block editor.
 Version: 0.1.0
-Author: Ryan Kienstra
-Author URI: https://ryankienstra.com
-License: GPLv3
+Author: Ryan Kienstra, Phil Johnston
+Author URI: https://wpengine.com
+License: GPLv2 or later
 */
 
 require_once dirname( __FILE__ ) . '/vendor/autoload.php';

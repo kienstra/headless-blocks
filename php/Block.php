@@ -19,7 +19,7 @@ class Block {
 	 *
 	 * @var string
 	 */
-	const BLOCK_NAME = 'headless-blocks/question';
+	const BLOCK_NAMESPACE = 'genesis-custom-blocks';
 
 	/**
 	 * The plugin.
@@ -27,13 +27,6 @@ class Block {
 	 * @var Plugin
 	 */
 	public $plugin;
-
-	/**
-	 * The instance ID of the block.
-	 *
-	 * @var int
-	 */
-	public static $instance_id = 0;
 
 	/**
 	 * Block constructor.
@@ -48,81 +41,32 @@ class Block {
 	 * Inits the class.
 	 */
 	public function init() {
-		add_action( 'init', [ $this, 'register_block' ] );
+		add_filter( 'render_block', [ $this, 'render_serialized_block' ], 10, 2 );
 	}
 
 	/**
-	 * Registers the block as a dynamic block, with a render_callback.
-	 */
-	public function register_block() {
-		if ( function_exists( 'register_block_type' ) ) {
-			register_block_type(
-				self::BLOCK_NAME,
-				[
-					'attributes'      => [
-						'category'   => [
-							'type' => 'string',
-						],
-						'className'  => [
-							'type' => 'string',
-						],
-						'textSource' => [
-							'type' => 'string',
-						],
-					],
-					'render_callback' => [ $this, 'render_block' ],
-				]
-			);
-		}
-	}
-
-	/**
-	 * Gets the markup of the dynamic 'AR Viewer' block, including its scripts.
+	 * For a certain block namespace, renders the block only as a comment.
 	 *
-	 * @param array $attributes The block attributes.
-	 * @return string The markup of the block.
-	 */
-	public function render_block( $attributes ) {
-		self::$instance_id++;
-		$post                 = get_post();
-		$attributes['postId'] = $post->ID;
-
-		$this->plugin->components->Asset->enqueue_style( Asset::STYLE_SLUG );
-
-		// The script that loads the Headless Blocks model isn't needed in the block editor.
-		if ( ! is_admin() ) {
-			$this->plugin->components->Asset->enqueue_script( Asset::FRONT_END_SCRIPT_SLUG );
-
-			wp_add_inline_script(
-				$this->plugin->components->Asset->get_prefixed_slug( Asset::FRONT_END_SCRIPT_SLUG ),
-				$this->get_inline_script( $attributes ),
-				'before'
-			);
-		}
-
-		ob_start();
-		?>
-		<div class="headless-blocks-block" data-block-instance="<?php echo esc_attr( self::$instance_id ); ?>"></div>
-		<?php
-
-		return ob_get_clean();
-	}
-
-	/**
-	 * Gets the inline script for the block attributes.
+	 * This allows parsing the block on the front-end,
+	 * and rendering it with the props.
+	 * There will be no block markup without additional rendering on the front-end.
 	 *
-	 * @param array $props The props to add to the variable.
-	 * @return string The inline script.
+	 * @param string $block_content The initial block content to filter.
+	 * @param array  $block         The block data.
+	 * @return string The block content.
 	 */
-	private function get_inline_script( $props ) {
-		ob_start();
-		?>
-		if ( 'undefined' === typeof HeadlessBlocksProps ) {
-			var HeadlessBlocksProps = {};
+	public function render_serialized_block( $block_content, $block ) {
+		if (
+				isset( $block['blockName'], $block['attrs'] )
+				&&
+				preg_match(
+					'#^' . self::BLOCK_NAMESPACE . '/#',
+					$block['blockName']
+				)
+		) {
+			return get_comment_delimited_block_content( $block['blockName'], $block['attrs'], '' );
 		}
 
-		HeadlessBlocksProps[ <?php echo esc_js( self::$instance_id ); ?> ] = <?php echo wp_json_encode( $props ); ?>;
-		<?php
-		return ob_get_clean();
+		return $block_content;
 	}
 }

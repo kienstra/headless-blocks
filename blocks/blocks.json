@@ -1,0 +1,74 @@
+{
+  "genesis-custom-blocks\/email-opt-in": {
+    "name": "email-opt-in",
+    "title": "Email Opt In",
+    "excluded": [],
+    "icon": "email",
+    "category": {
+      "icon": null,
+      "slug": "text",
+      "title": "Text"
+    },
+    "keywords": [],
+    "fields": {
+      "heading": {
+        "name": "heading",
+        "label": "Heading",
+        "control": "text",
+        "type": "string",
+        "order": 0
+      },
+      "main-copy": {
+        "name": "main-copy",
+        "label": "Main Copy",
+        "control": "text",
+        "type": "string",
+        "order": 1
+      },
+      "submission-message": {
+        "width": "50",
+        "help": "This will show on submitting the form",
+        "name": "submission-message",
+        "label": "Submission Message",
+        "control": "text",
+        "type": "string",
+        "order": 2
+      },
+      "button-text": {
+        "width": "50",
+        "name": "button-text",
+        "label": "Button Text",
+        "control": "text",
+        "type": "string",
+        "order": 3
+      }
+    }
+  },
+  "genesis-custom-blocks\/example": {
+    "name": "example",
+    "title": "Example",
+    "excluded": [],
+    "icon": "genesis_custom_blocks",
+    "category": {
+      "icon": null,
+      "slug": "text",
+      "title": "Text"
+    },
+    "keywords": [],
+    "fields": {
+      "new-field": {
+        "location": "editor",
+        "width": "100",
+        "help": "",
+        "default": "",
+        "placeholder": "",
+        "maxlength": "",
+        "name": "new-field",
+        "label": "New Field",
+        "control": "text",
+        "type": "string",
+        "order": 0
+      }
+    }
+  }
+}

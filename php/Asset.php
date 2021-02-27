@@ -7,6 +7,8 @@
 
 namespace HeadlessBlocks;
 
+use function Genesis\CustomBlocks\add_block;
+
 /**
  * Class Asset
  *
@@ -19,21 +21,7 @@ class Asset {
 	 *
 	 * @var string
 	 */
-	const BLOCK_JS_SLUG = 'block';
-
-	/**
-	 * The slug of the block JS file.
-	 *
-	 * @var string
-	 */
-	const FRONT_END_SCRIPT_SLUG = 'front-end';
-
-	/**
-	 * The slug of the block CSS file.
-	 *
-	 * @var string
-	 */
-	const STYLE_SLUG = 'style';
+	const BLOCK_JS_SLUG = 'blocks';
 
 	/**
 	 * The plugin.
@@ -56,6 +44,7 @@ class Asset {
 	 */
 	public function init() {
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
+		add_action( 'genesis_custom_blocks_template_path', [ $this, 'get_blocks_directory' ] );
 	}
 
 	/**
@@ -75,26 +64,13 @@ class Asset {
 	 */
 	public function enqueue_script( $slug ) {
 		$config = $this->get_script_config( $slug );
+
 		\wp_enqueue_script(
 			$this->get_prefixed_slug( $slug ),
 			$this->plugin->get_script_path( $slug ),
 			$config['dependencies'],
 			$config['version'],
 			true
-		);
-	}
-
-	/**
-	 * Enqueues a stylesheet by its slug.
-	 *
-	 * @param string $slug The slug of the stylesheet.
-	 */
-	public function enqueue_style( $slug ) {
-		\wp_enqueue_style(
-			$this->get_prefixed_slug( $slug ),
-			$this->plugin->get_style_path( $slug ),
-			[],
-			Plugin::VERSION
 		);
 	}
 
@@ -118,5 +94,16 @@ class Asset {
 	private function get_script_config( $slug ) {
 		$plugin_path = $this->plugin->get_dir();
 		return require "{$plugin_path}/js/dist/{$slug}.asset.php";
+	}
+
+	/**
+	 * Gets the blocks directory in this plugin.
+	 *
+	 * @param string $path The initial blocks directory.
+	 * @return string The path of the block directory
+	 */
+	public function get_blocks_directory( $path ) {
+		unset( $path );
+		return $this->plugin->get_dir();
 	}
 }

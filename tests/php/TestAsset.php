@@ -51,6 +51,7 @@ class TestAsset extends TestCase {
 	 */
 	public function test_init() {
 		WP_Mock::expectActionAdded( 'enqueue_block_editor_assets', [ $this->instance, 'enqueue_block_editor_scripts' ] );
+		WP_Mock::expectActionAdded( 'genesis_custom_blocks_template_path', [ $this->instance, 'get_blocks_directory' ] );
 		$this->instance->init();
 	}
 
@@ -62,37 +63,8 @@ class TestAsset extends TestCase {
 	public function test_enqueue_block_editor_scripts() {
 		WP_Mock::userFunction( 'wp_enqueue_script' )
 			->once()
-			->withSomeOfArgs( 'headless-blocks-block' );
+			->withSomeOfArgs( 'headless-blocks-blocks' );
 
 		$this->instance->enqueue_block_editor_scripts();
-
-	}
-
-	/**
-	 * Test enqueue_script.
-	 *
-	 * @covers \HeadlessBlocks\Plugin::enqueue_script()
-	 */
-	public function test_enqueue_script() {
-		$slug = 'block';
-		WP_Mock::userFunction( 'wp_enqueue_script' )
-			->once()
-			->withSomeOfArgs( "headless-blocks-{$slug}" );
-
-		$this->instance->enqueue_script( $slug );
-	}
-
-	/**
-	 * Test enqueue_style.
-	 *
-	 * @covers \HeadlessBlocks\Plugin::enqueue_style()
-	 */
-	public function test_enqueue_style() {
-		$slug = 'example-style';
-		WP_Mock::userFunction( 'wp_enqueue_style' )
-			->once()
-			->withSomeOfArgs( "headless-blocks-{$slug}" );
-
-		$this->instance->enqueue_style( $slug );
 	}
 }
