@@ -9,7 +9,7 @@ Use interactive React components on the front-end.
 **Stable tag:** 0.1.0
 **License:** GPLv2 or later
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/
-**Requires PHP:** 7.2
+**Requires PHP:** 7.3
 
 [![Build Status](https://api.travis-ci.com/kienstra/headless-blocks.svg)](https://travis-ci.org/kienstra/headless-blocks) [![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](http://gruntjs.com)
 
