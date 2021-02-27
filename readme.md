@@ -11,11 +11,19 @@ Use interactive React components on the front-end.
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/
 **Requires PHP:** 7.1
 
-[![Build Status](https://travis-ci.com/kienstra/headless-blocks.svg?branch=master)](https://travis-ci.org/kienstra/headless-blocks) [![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](http://gruntjs.com)
+[![Build Status](https://api.travis-ci.com/kienstra/headless-blocks.svg)](https://travis-ci.org/kienstra/headless-blocks) [![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](http://gruntjs.com)
 
 ## Description ##
 
-Use interactive React components on the front-end.
+Your custom blocks, optimized for headless.
+
+1. Write the front-end of your blocks as React components in your Next.js repo's blocks/ directory.
+
+1. Give this plugin the URL of your Next.js repo with `bash bin/setup.sh`
+
+1. This plugin will import those blocks and display them in Gutenberg.
+
+![headless-block-editor](https://user-images.githubusercontent.com/4063887/109378623-c4ae0380-7899-11eb-8f47-53eebb33240f.gif)
 
 ## Installation ##
 
