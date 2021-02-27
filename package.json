@@ -69,7 +69,7 @@
 		"lint:php": "vendor/bin/phpcs",
 		"lint:php:fix": "vendor/bin/phpcbf",
 		"packages-update": "wp-scripts packages-update",
-		"postinstall": "cd node_modules/getting-started/blocks && npm run build",
+		"postinstall": "cd node_modules/headless-front-end/blocks && npm run build",
 		"test:e2e": "wp-scripts test-e2e --config=tests/e2e/jest.config.js --runInBand",
 		"test:e2e:interactive": "npm run test:e2e -- --puppeteer-interactive",
 		"test:e2e:update-snapshot": "npm run test:e2e -- --updateSnapshot",

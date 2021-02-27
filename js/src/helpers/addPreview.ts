@@ -6,7 +6,7 @@ import * as React from 'react';
 /**
  * Internal dependencies
  */
-import blockComponents from 'getting-started/blocks/dist';
+import blockComponents from 'headless-front-end/blocks/dist';
 
 /**
  * Adds a preview component to the filter.
