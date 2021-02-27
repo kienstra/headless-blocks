@@ -23,7 +23,7 @@ Use interactive React components on the front-end.
 1. Clone this repo into `wp-content/plugins/`
 1. `cd headless-blocks`
 1. `bash bin/setup.sh`
-1. Follow the prompt to enter the URL of your headless front-end repo.
+1. Follow the prompt to enter the URL of your headless front-end repo
 1. `npm run build`
 
 ## Changelog ##
