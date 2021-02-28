@@ -30,7 +30,7 @@ Your custom blocks, optimized for headless.
 1. `cd headless-blocks`
 1. `nvm use # ensure npm is on the right version`
 1. `./bin/setup.sh`
-1. Follow the prompt to enter the URL of your headless front-end repo
+1. Follow the prompt to enter the name and URL of your headless front-end repo. That will make this plugin import the blocks from that repo.
 1. `npm run build`
 1. Or to watch for changes: `npm run dev`
 
