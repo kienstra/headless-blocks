@@ -89,16 +89,12 @@ gulp.task( 'clean:bundle', function() {
 	] );
 } );
 
-gulp.task( 'copy:tag', function() {
-	return run( 'export BUILD_VERSION=$(grep "Version" headless-blocks.php | cut -f4 -d" "); [ -z "$BUILD_VERSION" ] && exit 1; mkdir -p package/tags/$BUILD_VERSION/; rm -rf package/tags/$BUILD_VERSION/*; cp -r package/build/* package/tags/$BUILD_VERSION/' ).exec();
-} );
-
 gulp.task( 'create:zip', function() {
 	return run( 'cp -r package/build package/headless-blocks; export BUILD_VERSION=$(grep "Version" headless-blocks.php | cut -f4 -d" "); cd package; pwd; zip -r headless-blocks.$BUILD_VERSION.zip headless-blocks/; echo "ZIP of build: $(pwd)/headless-blocks.$BUILD_VERSION.zip"; rm -rf headless-blocks' ).exec();
 } );
 
 gulp.task( 'finish', function() {
-	process.stdout.write( 'Finished! The .zip file is at package/headless-blocks.*.*.*.zip. Do composer install to resume development, as this removed non-production dependencies.' );
+	return run( 'echo "Finished! The .zip file is at package/headless-blocks.*.*.*.zip. Do composer install to resume development, as this removed non-production dependencies."' ).exec();
 } );
 
 gulp.task( 'default', gulp.series(
@@ -111,7 +107,6 @@ gulp.task( 'default', gulp.series(
 	'readme',
 	'build',
 	'clean:bundle',
-	'copy:tag',
 	'create:zip',
 	'finish'
 ) );
