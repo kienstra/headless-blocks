@@ -32,6 +32,7 @@ addons:
 
 install:
   - composer install
+  - nvm install 15
   - nvm use
   - npm install
   - npm run build
