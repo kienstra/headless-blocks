@@ -13,9 +13,9 @@ import blockComponents from 'getting-started/blocks/dist';
  */
 const addPreview = ( initialPreview: React.Component[] | null, blockName: String ): React.Component[] | null | any => {
 	const fullBlockName = `genesis-custom-blocks/${ blockName }`;
-	// @ts-ignore
-	const block = blockComponents[ fullBlockName ] ? blockComponents[ fullBlockName ] : initialPreview;
-	return block /* eslint-disable-line import/namespace */
+	return blockComponents[ fullBlockName ]
+		? blockComponents[ fullBlockName ]
+		: initialPreview;
 };
 
 export default addPreview;

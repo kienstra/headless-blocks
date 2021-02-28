@@ -6,7 +6,7 @@ import { addFilter } from '@wordpress/hooks';
 /**
  * Internal dependencies
  */
-import { addPreview } from './helpers';
+import addPreview from './helpers/addPreview';
 
 addFilter(
 	'genesisCustomBlocks.alternatePreview',
