@@ -1,6 +1,6 @@
 /vendor
 node_modules
 /js/dist/
-build
+package
 headless-blocks.zip
 .phpunit.result.cache
