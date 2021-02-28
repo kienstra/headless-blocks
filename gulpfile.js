@@ -94,7 +94,7 @@ gulp.task( 'create:zip', function() {
 } );
 
 gulp.task( 'finish', function() {
-	return run( 'echo "Finished! The .zip file is at package/headless-blocks.*.*.*.zip. Do composer install to resume development, as this removed non-production dependencies."' ).exec();
+	return run( 'echo "Finished! The .zip file is at package/headless-blocks.*.zip. Do composer install to resume development, as this removed development packages."' ).exec();
 } );
 
 gulp.task( 'default', gulp.series(
