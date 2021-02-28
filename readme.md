@@ -29,9 +29,10 @@ Your custom blocks, optimized for headless.
 1. Clone this repo into `wp-content/plugins/`
 1. `cd headless-blocks`
 1. `nvm use # ensure npm is on the right version`
-1. `bash bin/setup.sh`
+1. `./bin/setup.sh`
 1. Follow the prompt to enter the URL of your headless front-end repo
 1. `npm run build`
+1. Or to watch for changes: `npm run dev`
 
 ## Changelog ##
 
