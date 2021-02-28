@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import * as React from 'react';
-
-/**
  * Internal dependencies
  */
 import addPreview from '../addPreview';
@@ -14,10 +9,10 @@ jest.mock( 'getting-started/blocks/dist', () => ( {
 
 describe( 'addPreview', () => {
 	it( 'should add a preview of a block that is available', () => {
-		expect(	addPreview( null, 'email-opt-in' ) ).toBeTruthy();
+		expect(	addPreview( null, 'genesis-custom-blocks/email-opt-in' ) ).toBeTruthy();
 	} );
 
 	it( 'should not add a preview for the block because it is not available', () => {
-		expect(	addPreview( null, 'block-name-not-available' ) ).toStrictEqual( null );
+		expect(	addPreview( null, 'foo-namespace/non-existent-block' ) ).toStrictEqual( null );
 	} );
 } );

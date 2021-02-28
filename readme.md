@@ -28,7 +28,7 @@ Your custom blocks, optimized for headless.
 1. Install this [.zip](https://github.com/studiopress/genesis-custom-blocks/files/6026023/genesis-custom-blocks.1.1.0.zip) of Genesis Custom Blocks, a dependency of this plugin
 1. Clone this repo into `wp-content/plugins/`
 1. `cd headless-blocks`
-1. `nvm use # ensure npm is on the right version`
+1. `nvm use`
 1. `./bin/setup.sh`
 1. Follow the prompt to enter the name and URL of your headless front-end repo. That will make this plugin import the blocks from that repo.
 1. `npm run build`
