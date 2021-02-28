@@ -7,14 +7,14 @@
 
 namespace HeadlessBlocks;
 
-/*
-Plugin Name: Headless Blocks
-Plugin URI: https://github.com/kienstra/headless-blocks
-Description: Interactive blocks in headless and the block editor.
-Version: 0.1.0
-Author: Ryan Kienstra, Phil Johnston
-Author URI: https://wpengine.com
-License: GPLv2 or later
+/**
+ * Plugin Name: Headless Blocks
+ * Plugin URI: https://github.com/kienstra/headless-blocks
+ * Description: Interactive blocks in headless and the block editor.
+ * Version: 0.1.0
+ * Author: Ryan Kienstra, Phil Johnston
+ * Author URI: https://wpengine.com
+ * License: GPLv2 or later
 */
 
 require_once dirname( __FILE__ ) . '/vendor/autoload.php';
