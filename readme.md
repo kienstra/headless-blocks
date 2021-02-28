@@ -11,7 +11,7 @@ Use interactive React components on the front-end.
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/
 **Requires PHP:** 7.3
 
-[![Build Status](https://api.travis-ci.com/kienstra/headless-blocks.svg)](https://travis-ci.org/kienstra/headless-blocks) [![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](http://gruntjs.com)
+[![Build Status](https://api.travis-ci.com/kienstra/headless-blocks.svg)](https://travis-ci.org/kienstra/headless-blocks)
 
 ## Description ##
 
