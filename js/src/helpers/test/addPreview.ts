@@ -8,7 +8,7 @@ import * as React from 'react';
  */
 import { addPreview } from '..';
 
-jest.mock( 'headless-front-end/blocks/dist', () => ( {
+jest.mock( 'getting-started/blocks/dist', () => ( {
 	'genesis-custom-blocks/email-opt-in': () => {},
 } ) );
 
