@@ -6,7 +6,7 @@ import * as React from 'react';
 /**
  * Internal dependencies
  */
-import { addPreview } from '..';
+import addPreview from '../addPreview';
 
 jest.mock( 'getting-started/blocks/dist', () => ( {
 	'genesis-custom-blocks/email-opt-in': () => {},
