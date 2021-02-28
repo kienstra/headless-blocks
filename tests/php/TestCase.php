@@ -7,14 +7,14 @@
 
 namespace HeadlessBlocks;
 
-use Mockery;
-use WP_Mock;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
 
 /**
  * Tests for the Router class.
  */
-class TestCase extends WP_Mock\Tools\TestCase {
+class TestCase extends \PHPUnit\Framework\TestCase {
 
-	use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+	use MockeryPHPUnitIntegration;
 
 }

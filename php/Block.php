@@ -15,6 +15,13 @@ namespace HeadlessBlocks;
 class Block {
 
 	/**
+	 * The textdomain of the plugin.
+	 *
+	 * @var string
+	 */
+	const TEXTDOMAIN = 'headless-blocks';
+
+	/**
 	 * The name of the block.
 	 *
 	 * @var string
@@ -41,7 +48,7 @@ class Block {
 	 * Inits the class.
 	 */
 	public function init() {
-		add_filter( 'render_block', [ $this, 'render_serialized_block' ], 10, 2 );
+		\add_filter( 'render_block', [ $this, 'render_serialized_block' ], 10, 2 );
 	}
 
 	/**

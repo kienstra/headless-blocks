@@ -9,7 +9,7 @@ Use interactive React components on the front-end.
 **Stable tag:** 0.1.0
 **License:** GPLv2 or later
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/
-**Requires PHP:** 7.1
+**Requires PHP:** 7.3
 
 [![Build Status](https://api.travis-ci.com/kienstra/headless-blocks.svg)](https://travis-ci.org/kienstra/headless-blocks) [![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](http://gruntjs.com)
 
@@ -18,9 +18,7 @@ Use interactive React components on the front-end.
 Your custom blocks, optimized for headless.
 
 1. Write the front-end of your blocks as React components in your Next.js repo's blocks/ directory.
-
 1. Give this plugin the URL of your Next.js repo with `bash bin/setup.sh`
-
 1. This plugin will import those blocks and display them in Gutenberg.
 
 ![headless-block-editor](https://user-images.githubusercontent.com/4063887/109378623-c4ae0380-7899-11eb-8f47-53eebb33240f.gif)
@@ -31,9 +29,10 @@ Your custom blocks, optimized for headless.
 1. Clone this repo into `wp-content/plugins/`
 1. `cd headless-blocks`
 1. `nvm use # ensure npm is on the right version`
-1. `bash bin/setup.sh`
-1. Follow the prompt to enter the URL of your headless front-end repo
+1. `./bin/setup.sh`
+1. Follow the prompt to enter the name and URL of your headless front-end repo. That will make this plugin import the blocks from that repo.
 1. `npm run build`
+1. Or to watch for changes: `npm run dev`
 
 ## Changelog ##
 

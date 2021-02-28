@@ -7,7 +7,8 @@
 
 namespace HeadlessBlocks;
 
-use WP_Mock;
+use Brain\Monkey\Functions;
+use Brain\Monkey;
 
 /**
  * Tests for class Plugin.
@@ -22,13 +23,24 @@ class TestPlugin extends TestCase {
 	public $instance;
 
 	/**
-	 * Setup.
+	 * Sets up each test.
 	 *
 	 * @inheritdoc
 	 */
 	public function setUp() : void {
 		parent::setUp();
+		Monkey\setUp();
 		$this->instance = new Plugin( dirname( dirname( __FILE__ ) ) );
+	}
+
+	/**
+	 * Tears down after each test.
+	 *
+	 * @inheritdoc
+	 */
+	public function tearDown() : void {
+		Monkey\tearDown();
+		parent::tearDown();
 	}
 
 	/**
@@ -37,7 +49,10 @@ class TestPlugin extends TestCase {
 	 * @covers \HeadlessBlocks\Plugin::init()
 	 */
 	public function test_init() {
-		WP_Mock::expectActionAdded( 'init', [ $this->instance, 'plugin_localization' ] );
+		Functions\expect( 'add_action' )->once()->with(
+			'init',
+			[ $this->instance, 'plugin_localization' ]
+		);
 
 		$this->instance->init();
 	}
@@ -58,11 +73,12 @@ class TestPlugin extends TestCase {
 	 * Test plugin_localization().
 	 *
 	 * @covers \HeadlessBlocks\Plugin::plugin_localization()
+	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired
 	 */
 	public function test_plugin_localization() {
-		WP_Mock::userFunction( 'load_plugin_textdomain' )
+		Functions\expect( 'load_plugin_textdomain' )
 			->once()
-			->withSomeOfArgs( 'headless-blocks' );
+			->with( 'headless-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 		$this->instance->plugin_localization();
 	}
@@ -91,12 +107,12 @@ class TestPlugin extends TestCase {
 	 * @covers \HeadlessBlocks\Plugin::get_script_path()
 	 */
 	public function test_get_script_path() {
-		WP_Mock::userFunction( 'plugins_url' )
+		Functions\expect( 'plugins_url' )
 			->once()
-			->andReturnArg( 0 );
+			->andReturnFirstArg();
 		$slug = 'example';
 
-		$this->assertStringContainsString( "{$slug}.js", $this->instance->get_script_path( $slug ) );
+		$this->assertStringContainsString( "js/dist/{$slug}.js", $this->instance->get_script_path( $slug ) );
 	}
 
 	/**
@@ -105,9 +121,9 @@ class TestPlugin extends TestCase {
 	 * @covers \HeadlessBlocks\Plugin::get_style_path()
 	 */
 	public function test_get_style_path() {
-		WP_Mock::userFunction( 'plugins_url' )
+		Functions\expect( 'plugins_url' )
 			->once()
-			->andReturnArg( 0 );
+			->andReturnFirstArg();
 		$slug = 'foo-style';
 
 		$this->assertStringContainsString( "{$slug}.css", $this->instance->get_style_path( $slug ) );

@@ -11,15 +11,15 @@ cache:
 
 matrix:
   include:
-    - php: 7.4snapshot
+    - php: 8.0
+      env: WP_TRAVISCI=test-php
+    - php: 7.4
       env: WP_TRAVISCI=test-php
     - php: 7.3
       env: WP_TRAVISCI=test-php
-    - php: 7.2
-      env: WP_TRAVISCI=test-php
-    - php: 7.2
+    - php: 7.3
       env: WP_TRAVISCI=test-js
-    - php: 7.2
+    - php: 7.3
       env: WP_TRAVISCI=lint
 
 # Make sure NodeGit gets the correct C libs, copied from Gutenberg.
