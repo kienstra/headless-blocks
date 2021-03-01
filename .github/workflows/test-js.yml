@@ -18,6 +18,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
 
     - name: Npm install and build
       # It's not necessary to run the full build, since Jest can interpret
