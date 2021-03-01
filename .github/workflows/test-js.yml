@@ -1,0 +1,31 @@
+name: Jest Tests
+
+# Mainly copied from Gutenberg GitHub actions
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+
+jobs:
+  test-js:
+    name: JavaScript
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [15]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Npm install and build
+      # It's not necessary to run the full build, since Jest can interpret
+      # source files with `babel-jest`. Some packages have their own custom
+      # build tasks, however. These must be run.
+      run: |
+        composer install
+        npm ci
+        npm run build
+    - name: Running the tests
+      run: npm run test:js -- --ci --maxWorkers=2

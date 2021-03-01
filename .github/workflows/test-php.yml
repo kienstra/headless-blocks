@@ -1,0 +1,26 @@
+name: PHPUnit Tests
+
+# Mainly copied from Gutenberg GitHub actions
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+
+jobs:
+  test-php:
+    name: PHP
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Npm install and build
+      run: |
+        composer install
+        npm ci
+        npm run build
+
+    - name: Running lint check
+      run: npm run test:php
