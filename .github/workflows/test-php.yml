@@ -22,11 +22,11 @@ jobs:
         persist-credentials: false
 
     - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: curl, date, dom, gd, iconv, json, libxml, mysql, spl
-          ini-values: pcov.directory=.
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        extensions: curl, date, dom, gd, iconv, json, libxml, mysql, spl
+        ini-values: pcov.directory=.
 
     - name: Use Node.js 15.x
       uses: actions/setup-node@v1
