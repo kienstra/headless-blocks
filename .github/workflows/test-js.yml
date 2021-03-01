@@ -24,7 +24,7 @@ jobs:
       with:
         node-version: 15.x
 
-        - name: Npm install and build
+    - name: Npm install and build
       # It's not necessary to run the full build, since Jest can interpret
       # source files with `babel-jest`. Some packages have their own custom
       # build tasks, however. These must be run.
