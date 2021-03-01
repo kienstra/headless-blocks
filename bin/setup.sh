@@ -19,10 +19,10 @@ sed -i '' -E "s#from 'getting-started/blocks#from '$repo_name/blocks#" js/src/he
 sed -i '' -E "s#getting-started/blocks#$repo_name/blocks#" js/src/helpers/test/addPreview.ts
 
 echo "Thanks, that repo is now set in your package.json, updating the packages…"
-composer install && npm update js/src/helpers/addPreview.ts js/src/helpers/test/addPreview.ts
-git add package.json package-lock.json
+composer install && npm update
+git add package.json package-lock.json js/src/helpers/addPreview.ts js/src/helpers/test/addPreview.ts
 
 echo "Committing that change…"
-git commit -m "Set the headless-front-end package to the repo"
+git commit -m "Set the headless front-end package and import it in JS files"
 
 echo "Success! Do 'wp plugin activate headless-blocks && npm run dev' to start using this."
