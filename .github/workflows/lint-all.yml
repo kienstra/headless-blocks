@@ -1,4 +1,4 @@
-name: Lint
+name: Lint All
 
 # Mainly copied from Gutenberg GitHub actions
 on:

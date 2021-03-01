@@ -18,6 +18,11 @@ jobs:
       with:
         persist-credentials: false
 
+    - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        matrix:
+          php-version: ['7.3', '7.4', '8.0']
+
     - name: Use Node.js 15.x
       uses: actions/setup-node@v1
       with:
