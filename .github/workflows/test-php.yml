@@ -20,7 +20,8 @@ jobs:
 
     - name: Npm install and build
       run: |
-        nvm use
+        node --version
+        npm --verison
         composer install
         npm ci
         npm run build
