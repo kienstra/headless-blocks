@@ -9,7 +9,7 @@ import { addFilter } from '@wordpress/hooks';
 import addPreview from './helpers/addPreview';
 
 addFilter(
-	'genesisCustomBlocks.alternatePreview',
+	'genesisCustomBlocks.reactPreview',
 	'headlessBlocks/addPreview',
 	addPreview
 );
