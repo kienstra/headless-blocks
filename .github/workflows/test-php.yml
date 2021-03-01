@@ -12,7 +12,6 @@ jobs:
     name: PHP
 
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         php: ['7.3', '7.4', '8.0']
@@ -27,6 +26,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: curl, date, dom, gd, iconv, json, libxml, mysql, spl
+          ini-values: pcov.directory=.
 
     - name: Use Node.js 15.x
       uses: actions/setup-node@v1
