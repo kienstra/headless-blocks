@@ -26,8 +26,6 @@ jobs:
       # source files with `babel-jest`. Some packages have their own custom
       # build tasks, however. These must be run.
       run: |
-        node --version
-        npm --verison
         composer install
         npm ci
         npm run build

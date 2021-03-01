@@ -20,10 +20,6 @@ jobs:
 
     - name: Npm install and build
       run: |
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-        nvm use
-        node --version
-        npm --verison
         composer install
         npm ci
         npm run build
