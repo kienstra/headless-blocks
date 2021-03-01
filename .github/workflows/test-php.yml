@@ -1,0 +1,41 @@
+name: PHPUnit Tests
+
+# Mainly copied from Gutenberg GitHub actions
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+
+jobs:
+  test-php:
+    name: PHP
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.3', '7.4', '8.0']
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+
+    - name: Use Node.js 15.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15.x
+
+    - name: Npm install and build
+      run: |
+        composer install
+        npm ci
+        npm run build
+
+    - name: Running PHPUnit tests
+      run: npm run test:php

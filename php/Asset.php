@@ -43,31 +43,42 @@ class Asset {
 	 * Inits the class.
 	 */
 	public function init() {
-		\add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
+		\add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_script' ] );
+		\add_action( 'admin_footer', [ $this, 'enqueue_gcb_editor_script' ] );
 		\add_action( 'genesis_custom_blocks_template_path', [ $this, 'get_blocks_directory' ] );
 	}
 
 	/**
-	 * Registers the scripts for the block.
-	 *
-	 * Not simply enqueued here, as one of the scripts also is enqueued
-	 * in the 'render_callback' of the block.
+	 * Enqueues the script for the block.
 	 */
-	public function enqueue_block_editor_scripts() {
-		$this->enqueue_script( self::BLOCK_JS_SLUG );
+	public function enqueue_block_editor_script() {
+		$this->enqueue_script();
 	}
 
 	/**
-	 * Enqueues a script by its slug.
-	 *
-	 * @param string $slug The slug of the script.
+	 * Enqueues the script in the GCB editor.
 	 */
-	public function enqueue_script( $slug ) {
-		$config = $this->get_script_config( $slug );
+	public function enqueue_gcb_editor_script() {
+		$screen = \get_current_screen();
+
+		if (
+			isset( $screen->post_type, $screen->base ) &&
+			'genesis_custom_block' === $screen->post_type &&
+			'post' === $screen->base
+		) {
+			$this->enqueue_script();
+		}
+	}
+
+	/**
+	 * Enqueues a script.
+	 */
+	public function enqueue_script() {
+		$config = $this->get_script_config( self::BLOCK_JS_SLUG );
 
 		\wp_enqueue_script(
-			$this->get_prefixed_slug( $slug ),
-			$this->plugin->get_script_path( $slug ),
+			$this->get_prefixed_slug( self::BLOCK_JS_SLUG ),
+			$this->plugin->get_script_path( self::BLOCK_JS_SLUG ),
 			$config['dependencies'],
 			$config['version'],
 			true

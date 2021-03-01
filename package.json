@@ -17,6 +17,10 @@
 	"bugs": {
 		"url": "https://github.com/kienstra/headless-blocks/issues"
 	},
+	"engines": {
+		"node": ">=15.0.0",
+		"npm": ">=7"
+	},
 	"directories": {
 		"test": "tests"
 	},
@@ -41,7 +45,7 @@
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-import": "2.22.1",
 		"eslint-plugin-react-hooks": "4.2.0",
-		"getting-started": "https://github.com/kienstra/headless-wordpress.git",
+		"getting-started": "git+ssh://git@github.com/kienstra/headless-wordpress.git",
 		"gulp": "4.0.2",
 		"gulp-run": "1.7.1",
 		"husky": "4.2.5",
