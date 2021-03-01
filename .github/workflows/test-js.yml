@@ -27,7 +27,7 @@ jobs:
       # build tasks, however. These must be run.
       run: |
         composer install
-        npm install
+        npm ci
         npm run build
     - name: Running the tests
       run: npm run test:js -- --ci --maxWorkers=2
