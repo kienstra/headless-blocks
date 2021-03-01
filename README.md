@@ -25,9 +25,9 @@ Your custom blocks, optimized for headless.
 
 ![headless-block-editor](https://user-images.githubusercontent.com/4063887/109378623-c4ae0380-7899-11eb-8f47-53eebb33240f.gif)
 
-## Installation ##
+## Setup ##
 
-1. Install this [.zip](https://github.com/studiopress/genesis-custom-blocks/files/6026023/genesis-custom-blocks.1.1.0.zip) of Genesis Custom Blocks, a dependency of this plugin
+1. Install this [.zip](https://github.com/studiopress/genesis-custom-blocks/files/6059880/genesis-custom-blocks.1.1.0.zip) of Genesis Custom Blocks, a dependency of this plugin
 1. Clone this repo into `wp-content/plugins/`
 1. `cd headless-blocks`
 1. `nvm use`
