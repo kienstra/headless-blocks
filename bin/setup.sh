@@ -19,7 +19,7 @@ sed -i '' -E "s#from 'getting-started/blocks#from '$repo_name/blocks#" js/src/he
 sed -i '' -E "s#getting-started/blocks#$repo_name/blocks#" js/src/helpers/test/addPreview.ts
 
 echo "Thanks, that repo is now set in your package.json, updating the packages…"
-composer install && npm update
+composer install && npm update && npm run postinstall
 git add package.json package-lock.json js/src/helpers/addPreview.ts js/src/helpers/test/addPreview.ts
 
 echo "Committing that change…"
