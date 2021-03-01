@@ -73,7 +73,7 @@ class TestPlugin extends TestCase {
 	 * Test plugin_localization().
 	 *
 	 * @covers \HeadlessBlocks\Plugin::plugin_localization()
-	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired
+	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired If the expectation args are wrong.
 	 */
 	public function test_plugin_localization() {
 		Functions\expect( 'load_plugin_textdomain' )

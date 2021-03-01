@@ -55,6 +55,9 @@ class Asset {
 		$this->enqueue_script();
 	}
 
+	/**
+	 * Enqueues the script in the GCB editor.
+	 */
 	public function enqueue_gcb_editor_script() {
 		$screen = \get_current_screen();
 

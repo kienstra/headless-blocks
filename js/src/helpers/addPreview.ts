@@ -10,7 +10,7 @@ import blockComponents from 'getting-started/blocks/dist';
 
 /**
  * Adds a preview component to the filter.
- * 
+ *
  * @param {React.Component[]|null} initialPreview The initial preview component, if any.
  * @param {string} blockNameWithNamespace The GCB block name, starting with the namespace of genesis-custom-blocks/.
  */

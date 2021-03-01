@@ -32,7 +32,7 @@ class TestAsset extends TestCase {
 		parent::setUp();
 		Monkey\setUp();
 		Functions\stubs( [ 'plugins_url' ] );
-		$plugin = new Plugin( dirname( dirname( __FILE__ ) ) );
+		$plugin         = new Plugin( dirname( dirname( __FILE__ ) ) );
 		$this->instance = new Asset( $plugin );
 	}
 
@@ -50,7 +50,7 @@ class TestAsset extends TestCase {
 	 * Test init.
 	 *
 	 * @covers \HeadlessBlocks\Asset::init()
-	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired
+	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired If the expectation args are wrong.
 	 */
 	public function test_init() {
 		Functions\expect( 'add_action' )->once()->with(
@@ -83,7 +83,7 @@ class TestAsset extends TestCase {
 	 * @covers \HeadlessBlocks\Asset::enqueue_gcb_editor_script()
 	 */
 	public function test_enqueue_gcb_editor_script_wrong_screen() {
-		$screen = new stdClass();
+		$screen            = new stdClass();
 		$screen->post_type = 'page';
 		$screen->base      = 'post';
 
@@ -101,7 +101,7 @@ class TestAsset extends TestCase {
 	 * @covers \HeadlessBlocks\Asset::enqueue_gcb_editor_script()
 	 */
 	public function test_enqueue_gcb_editor_script_correct_screen() {
-		$screen = new stdClass();
+		$screen            = new stdClass();
 		$screen->post_type = 'genesis_custom_block';
 		$screen->base      = 'post';
 

@@ -30,7 +30,7 @@ class TestBlock extends TestCase {
 	public function setUp() : void {
 		parent::setUp();
 		Monkey\setUp();
-		$plugin = new Plugin( dirname( dirname( __FILE__ ) ) );
+		$plugin         = new Plugin( dirname( dirname( __FILE__ ) ) );
 		$this->instance = new Block( $plugin );
 	}
 
@@ -92,7 +92,7 @@ class TestBlock extends TestCase {
 	 * Test render_serialized_block when on a block namespace that this should not change.
 	 *
 	 * @covers \HeadlessBlocks\Block::render_serialized_block()
-	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired
+	 * @throws \Brain\Monkey\Expectation\Exception\ExpectationArgsRequired If the expectation args are wrong.
 	 */
 	public function test_render_serialized_block_correct_block_namespace() {
 		$initial_content  = '<p>Here is initial content</p>';
