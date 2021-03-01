@@ -13,15 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        node: [15]
 
     steps:
     - uses: actions/checkout@v2
       with:
         persist-credentials: false
 
-    - name: Npm install and build
+    - name: Use Node.js 15.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15.x
+
+        - name: Npm install and build
       # It's not necessary to run the full build, since Jest can interpret
       # source files with `babel-jest`. Some packages have their own custom
       # build tasks, however. These must be run.
