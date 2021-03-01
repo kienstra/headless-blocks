@@ -11,7 +11,9 @@ License: GPLv2 or later
 Donate link: http://jdrf.org/get-involved/ways-to-donate/
 Requires PHP: 7.3
 
-[![Build Status](https://api.travis-ci.com/kienstra/headless-blocks.svg)](https://travis-ci.org/kienstra/headless-blocks)
+![Jest Tests](https://github.com/kienstra/headless-blocks/actions/workflows/test-js.yml/badge.svg)
+![PHPUnit Tests](https://github.com/kienstra/headless-blocks/actions/workflows/test-php.yml/badge.svg)
+![Lint All](https://github.com/kienstra/headless-blocks/actions/workflows/lint-all.yml/badge.svg)
 
 ## Description ##
 
