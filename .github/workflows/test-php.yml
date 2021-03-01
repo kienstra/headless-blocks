@@ -21,7 +21,7 @@ jobs:
     - name: Npm install and build
       run: |
         composer install
-        npm ci
+        npm install
         npm run build
 
     - name: Running lint check
