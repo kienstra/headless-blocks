@@ -1,6 +1,5 @@
 name: Lint All
 
-# Mainly copied from Gutenberg GitHub actions
 on:
   pull_request:
   push:
