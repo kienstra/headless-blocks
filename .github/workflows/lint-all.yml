@@ -1,4 +1,4 @@
-name: Jest Tests
+name: Lint
 
 # Mainly copied from Gutenberg GitHub actions
 on:
@@ -8,8 +8,8 @@ on:
       - develop
 
 jobs:
-  test-js:
-    name: JavaScript
+  lint-all:
+    name: Lint
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -24,10 +24,9 @@ jobs:
       with:
         node-version: 15.x
 
-    - name: Npm install and build
+    - name: Lint all files
       run: |
         composer install
         npm ci
-        npm run build
-    - name: Running the Jest tests
-      run: npm run test:js -- --ci --maxWorkers=2
+    - name: Running the linting
+      run: npm run lint

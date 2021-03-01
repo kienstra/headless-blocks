@@ -4,3 +4,4 @@ node_modules
 package
 headless-blocks.zip
 .phpunit.result.cache
+.DS_Store

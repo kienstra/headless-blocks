@@ -29,5 +29,5 @@ jobs:
         npm ci
         npm run build
 
-    - name: Running lint check
+    - name: Running PHPUnit tests
       run: npm run test:php
