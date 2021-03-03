@@ -19,8 +19,8 @@ Requires PHP: 7.3
 
 Your custom blocks, optimized for headless.
 
-1. Write the front-end of your blocks as React components in your Next.js repo's blocks/ directory.
-1. Give this plugin the URL of your Next.js repo with `bash bin/setup.sh`
+1. Write the front-end of your blocks as React components in your Next.js repo's `blocks/` directory.
+1. Give this plugin the URL of your Next.js repo with `./bin/setup.sh`
 1. This plugin will import those blocks and display them in Gutenberg.
 
 ![headless-block-editor](https://user-images.githubusercontent.com/4063887/109378623-c4ae0380-7899-11eb-8f47-53eebb33240f.gif)
