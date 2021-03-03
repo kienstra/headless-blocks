@@ -59,13 +59,6 @@ class Plugin {
 	private $classes = [ 'Asset', 'Block' ];
 
 	/**
-	 * The instantiated classes of the plugin.
-	 *
-	 * @var stdClass
-	 */
-	public $components;
-
-	/**
 	 * Plugin constructor.
 	 *
 	 * @param string $file_path The plugin's file path.
@@ -87,11 +80,9 @@ class Plugin {
 	 * Inits the plugin classes.
 	 */
 	public function init_classes() {
-		$this->components = new \stdClass();
 		foreach ( $this->classes as $class ) {
-			$class_with_namespace     = __NAMESPACE__ . '\\' . $class;
-			$this->components->$class = new $class_with_namespace( $this );
-			$this->components->$class->init();
+			$class_with_namespace = __NAMESPACE__ . '\\' . $class;
+			( new $class_with_namespace( $this ) )->init();
 		}
 	}
 
@@ -123,7 +114,7 @@ class Plugin {
 	}
 
 	/**
-	 * Gets the path of a script.
+	 * Gets the path of the script.
 	 *
 	 * @param string $slug The slug of the script.
 	 * @return string The path of the script.
@@ -133,7 +124,7 @@ class Plugin {
 	}
 
 	/**
-	 * Gets the path of a stylesheet.
+	 * Gets the path of the stylesheet.
 	 *
 	 * @param string $slug The slug of the stylesheet.
 	 * @return string The path of the stylesheet.

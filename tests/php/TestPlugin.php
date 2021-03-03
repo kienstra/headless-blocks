@@ -58,18 +58,6 @@ class TestPlugin extends TestCase {
 	}
 
 	/**
-	 * Test init_classes.
-	 *
-	 * @covers \HeadlessBlocks\Plugin::init_classes()
-	 */
-	public function test_init_classes() {
-		$this->instance->init_classes();
-		foreach ( [ 'Asset', 'Block' ] as $class ) {
-			$this->assertEquals( __NAMESPACE__ . '\\' . $class, get_class( $this->instance->components->$class ) );
-		}
-	}
-
-	/**
 	 * Test plugin_localization().
 	 *
 	 * @covers \HeadlessBlocks\Plugin::plugin_localization()

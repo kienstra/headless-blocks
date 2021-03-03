@@ -64,12 +64,12 @@ class Block {
 	 */
 	public function render_serialized_block( $block_content, $block ) {
 		if (
-				isset( $block['blockName'], $block['attrs'] )
-				&&
-				preg_match(
-					'#^' . self::BLOCK_NAMESPACE . '/#',
-					$block['blockName']
-				)
+			isset( $block['blockName'], $block['attrs'] )
+			&&
+			preg_match(
+				'#^' . self::BLOCK_NAMESPACE . '/#',
+				$block['blockName']
+			)
 		) {
 			return get_comment_delimited_block_content( $block['blockName'], $block['attrs'], '' );
 		}
