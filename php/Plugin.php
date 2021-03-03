@@ -81,7 +81,7 @@ class Plugin {
 	 */
 	public function init_classes() {
 		foreach ( $this->classes as $class ) {
-			$class_with_namespace     = __NAMESPACE__ . '\\' . $class;
+			$class_with_namespace = __NAMESPACE__ . '\\' . $class;
 			( new $class_with_namespace( $this ) )->init();
 		}
 	}
