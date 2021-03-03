@@ -87,7 +87,6 @@ class Asset {
 
 	/**
 	 * Gets the slug of the asset, prefixed with the plugin slug.
-	 * For example, 'headless-blocks-block'.
 	 *
 	 * @param string $asset_slug The slug of the asset.
 	 * @return string $full_slug The slug of the asset, prepended with the plugin slug.
