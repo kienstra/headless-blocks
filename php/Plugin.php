@@ -114,7 +114,7 @@ class Plugin {
 	}
 
 	/**
-	 * Gets the path of a script.
+	 * Gets the path of the script.
 	 *
 	 * @param string $slug The slug of the script.
 	 * @return string The path of the script.
@@ -124,7 +124,7 @@ class Plugin {
 	}
 
 	/**
-	 * Gets the path of a stylesheet.
+	 * Gets the path of the stylesheet.
 	 *
 	 * @param string $slug The slug of the stylesheet.
 	 * @return string The path of the stylesheet.
