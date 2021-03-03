@@ -11,15 +11,18 @@ echo "Thanks! What's the full URL of your headless front-end repo, ending in .gi
 echo "This is the URL you'd use with git clone <url>, like https://github.com/foo/foo-baz.git"
 echo
 read repo_url
+echo 
+echo "Thanks, changing this plugin to import your Next.js repo's blocks and installing dependencies…"
 
-sed -i '' -E "s#\"getting-started\": \"[^\"]+#\"$repo_name\": \"$repo_url#" package.json
+npm remove getting-started
+npm install $repo_url --save-dev
+npm install
 sed -i '' -E "s#node_modules/getting-started/blocks#node_modules/$repo_name/blocks#" package.json
 
 sed -i '' -E "s#from 'getting-started/blocks#from '$repo_name/blocks#" js/src/helpers/addPreview.ts js/src/helpers/test/addPreview.ts
 sed -i '' -E "s#getting-started/blocks#$repo_name/blocks#" js/src/helpers/test/addPreview.ts
 
-echo "Thanks, that repo is now set in your package.json, updating the packages…"
-composer install && npm update && npm run postinstall
+echo "Thanks, that repo is now set in your package.json, installing the Composer packages…"
 git add package.json package-lock.json js/src/helpers/addPreview.ts js/src/helpers/test/addPreview.ts
 
 echo "Committing that change…"
